@@ -1,4 +1,4 @@
-apply plugin: 'java'
+
 buildscript {
     repositories {
         maven {
@@ -11,3 +11,7 @@ buildscript {
 }
 
 apply plugin: 'templates'
+apply plugin: 'application'
+apply plugin: 'java'
+
+mainClassName = 'org.rainzha.gradle.todo.ToDoApp'
