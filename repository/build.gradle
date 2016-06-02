@@ -4,5 +4,6 @@ repositories {
 
 dependencies {
     compile project(':model')
+    runtime 'com.h2database:h2:1.4.192'
     testCompile 'junit:junit:4.12'
 }
