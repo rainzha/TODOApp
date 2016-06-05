@@ -1,8 +1,10 @@
-package org.rainzha.gradle.todo.repository;
+package org.rainzha.gradle.repository;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.rainzha.gradle.todo.model.ToDoItem;
+import org.rainzha.gradle.todo.repository.H2ToDoRepository;
+import org.rainzha.gradle.todo.repository.ToDoRepository;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

@@ -80,7 +80,8 @@ public class H2ToDoRepository implements ToDoRepository {
 
             createStmt = conn.createStatement();
 
-            String createSql = "CREATE TABLE todo_item " +
+            String createSql = "DROP TABLE IF EXISTS todo_item; "+
+                    "CREATE TABLE todo_item " +
                     "(id IDENTITY PRIMARY KEY, " +
                     " name VARCHAR(255), " +
                     " completed BOOLEAN " +
