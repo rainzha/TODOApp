@@ -1,3 +1,5 @@
+apply plugin: 'jacoco'
+
 repositories {
     mavenCentral()
 }
@@ -15,10 +17,17 @@ test {
 
 sourceSets {
     integrationTest {
-        java.srcDir file('src/integTest/java')
-        resources.srcDir file('src/integTest/resources')
+        java.srcDir file('src/integrationTest/java')
+        resources.srcDir file('src/integrationTest/resources')
         compileClasspath = sourceSets.main.output + configurations.testRuntime
         runtimeClasspath = output + compileClasspath
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
     }
 }
 
@@ -29,6 +38,25 @@ task integrationTest(type: Test) {
     classpath = sourceSets.integrationTest.runtimeClasspath
     reports.html.destination = file("$reports.html.destination/integration")
     reports.junitXml.destination = file("$reports.junitXml.destination/integration")
+
+    // Integration test is finalized by the Jacoco test report task
+    //finalizedBy { tasks.integrationTestReport }
+
+    jacoco {
+        append = false
+        destinationFile = file("$buildDir/jacoco/integrationTest.exec")
+        classDumpFile = file("$buildDir/jacoco/classpathdumps")
+    }
+}
+
+task('integrationTestReport', type: JacocoReport) {
+    executionData project.tasks.integrationTest
+    sourceDirectories = project.files(project.sourceSets.test.allSource.srcDirs)
+    classDirectories = project.sourceSets.test.output
+    doLast {
+        println "Jacoco report for client created: file://${reportsDir.toURI().path}"
+    }
+
 }
 
 check.dependsOn integrationTest
