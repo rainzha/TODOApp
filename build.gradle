@@ -9,6 +9,7 @@ subprojects {
     ext.configDir = new File(rootDir, 'config')
     apply from: "$rootDir/gradle/jacoco.gradle"
     apply from: "$rootDir/gradle/checkstyle.gradle"
+    apply from: "$rootDir/gradle/pmd.gradle"
 
     repositories {
         mavenCentral()
