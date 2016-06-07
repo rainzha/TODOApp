@@ -1,0 +1,9 @@
+apply plugin: 'checkstyle'
+
+ext.checkstyleConfigDir = "$configDir/checkstyle"
+
+checkstyle {
+    configFile = new File(checkstyleConfigDir, 'sun_checks.xml')
+    sourceSets = [sourceSets.main]
+    ignoreFailures = true
+}

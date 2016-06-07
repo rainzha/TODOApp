@@ -1,9 +1,16 @@
-allprojects{
+allprojects {
     group = 'org.rainzha.gradle'
     version = '0.1'
 }
 
-subprojects{
+subprojects {
     apply plugin: 'java'
 
+    ext.configDir = new File(rootDir, 'config')
+    apply from: "$rootDir/gradle/jacoco.gradle"
+    apply from: "$rootDir/gradle/checkstyle.gradle"
+
+    repositories {
+        mavenCentral()
+    }
 }
