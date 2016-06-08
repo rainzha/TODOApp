@@ -52,3 +52,10 @@ task('jacocoIntegrationTestReport', type: JacocoReport) {
         println "Jacoco report for client created: file://${reportsDir.toURI().path}"
     }
 }
+
+sonarRunner {
+    sonarProperties {
+        properties["sonar.tests"] += project.sourceSets.integrationTest.allSource.srcDirs
+        property "sonar.jacoco.itReportPath", "$buildDir/jacoco/integrationTest.exec"
+    }
+}
