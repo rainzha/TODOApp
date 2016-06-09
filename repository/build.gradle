@@ -53,9 +53,9 @@ task('jacocoIntegrationTestReport', type: JacocoReport) {
     }
 }
 
-sonarRunner {
-    sonarProperties {
-        properties["sonar.tests"] += project.sourceSets.integrationTest.allSource.srcDirs
-        property "sonar.jacoco.itReportPath", "$buildDir/jacoco/integrationTest.exec"
-    }
-}
+//sonarRunner {
+//    sonarProperties {
+//        properties["sonar.tests"] += project.sourceSets.integrationTest.allSource.srcDirs
+//        property "sonar.jacoco.itReportPath", "$buildDir/jacoco/integrationTest.exec"
+//    }
+//}

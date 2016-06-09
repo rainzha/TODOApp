@@ -12,7 +12,7 @@ subprojects {
 //    apply from: "$rootDir/gradle/pmd.gradle"
 //    apply from: "$rootDir/gradle/findbugs.gradle"
 //    apply from: "$rootDir/gradle/jdepend.gradle"
-    apply from: "$rootDir/gradle/sonarqube.gradle"
+//    apply from: "$rootDir/gradle/sonarqube.gradle"
 
     repositories {
         mavenCentral()
